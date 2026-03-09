@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KorneaCare — Edukasi Kesehatan Mata</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --deep-blue: #0d2347;
+    --mid-blue: #1a3a6e;
+    --cornea-blue: #1e5fa8;
+    --sky: #3d8bcd;
+    --light-blue: #a8c8e8;
+    --cream: #f8f4ec;
+    --parchment: #f0e9d8;
+    --gold: #c8973a;
+    --gold-light: #e8c06a;
+    --text-dark: #1a1a2e;
+    --text-body: #2d3748;
+    --white: #ffffff;
+    --success: #2d7a4e;
+    --danger: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--navy);
+    color: var(--text-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--deep-blue) 40%, var(--mid-blue) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(168,200,232,0.12);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 4s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 900px; height: 900px;
+    border-radius: 50%;
+    border: 1px solid rgba(168,200,232,0.06);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 4s ease-in-out infinite 1s;
+  }
+
+  @keyframes pulse-ring {
+    0%,100% { transform: translate(-50%,-50%) scale(1); opacity:1; }
+    50% { transform: translate(-50%,-50%) scale(1.05); opacity:0.5; }
+  }
+
+  .app-logo {
+    display: inline-block;
+    background: rgba(168,200,232,0.15);
+    border: 1px solid rgba(168,200,232,0.3);
+    color: var(--light-blue);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 40px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 span {
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--light-blue);
+    max-width: 580px;
+    margin: 16px auto 40px;
+    font-weight: 300;
+    font-style: italic;
+    position: relative; z-index: 1;
+  }
+
+  .nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    position: relative; z-index: 1;
+  }
+
+  .nav-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Source Serif 4', serif;
+    text-decoration: none;
+  }
+
+  .nav-pill:hover, .nav-pill.active {
+    background: var(--cornea-blue);
+    border-color: var(--cornea-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30,95,168,0.4);
+  }
+
+  /* ── AUTHORS BANNER ── */
+  .authors-banner {
+    background: linear-gradient(90deg, var(--deep-blue), var(--mid-blue));
+    border-top: 1px solid rgba(168,200,232,0.2);
+    border-bottom: 1px solid rgba(168,200,232,0.2);
+    padding: 20px 24px;
+    text-align: center;
+    color: var(--light-blue);
+    font-size: 0.9rem;
+  }
+
+  .authors-banner .authors-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px 32px;
+  }
+
+  .author-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .author-label {
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+
+  .author-name {
+    color: var(--white);
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .author-nim {
+    color: rgba(168,200,232,0.7);
+    font-size: 0.78rem;
+  }
+
+  .divider-dot {
+    color: rgba(168,200,232,0.3);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  /* ── CONTENT ── */
+  .content-wrapper {
+    background: var(--cream);
+    min-height: 100vh;
+  }
+
+  section {
+    padding: 80px 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  section:nth-child(even) {
+    background: none;
+  }
+
+  .section-full {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .section-bg-white {
+    background: var(--white);
+  }
+
+  .section-bg-blue {
+    background: var(--deep-blue);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cornea-blue);
+    margin-bottom: 8px;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-title.light {
+    color: var(--white);
+  }
+
+  .section-label.light {
+    color: var(--gold-light);
+  }
+
+  .section-desc {
+    color: #4a5568;
+    font-size: 1.05rem;
+    max-width: 680px;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .section-desc.light { color: var(--light-blue); }
+
+  .divider-line {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--cornea-blue), var(--gold));
+    border-radius: 2px;
+    margin: 20px 0 40px;
+  }
+
+  .divider-line.center { margin: 20px auto 40px; }
+
+  /* ── ANATOMY CARD ── */
+  .anatomy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+    margin-top: 40px;
+  }
+
+  .anatomy-visual {
+    background: linear-gradient(135deg, var(--navy), var(--mid-blue));
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .eye-diagram svg {
+    width: 200px; height: 200px;
+  }
+
+  .anatomy-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: var(--light-blue);
+  }
+
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .anatomy-layers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .layer-card {
+    background: var(--white);
+    border: 1px solid rgba(30,95,168,0.1);
+    border-left: 4px solid var(--cornea-blue);
+    border-radius: 10px;
+    padding: 14px 18px;
+    transition: box-shadow 0.2s;
+  }
+
+  .layer-card:hover {
+    box-shadow: 0 4px 16px rgba(30,95,168,0.1);
+  }
+
+  .layer-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.95rem;
+  }
+
+  .layer-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 3px;
+  }
+
+  /* ── CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .info-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 24px;
+    border: 1px solid rgba(30,95,168,0.1);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .info-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--cornea-blue), var(--sky));
+  }
+
+  .info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(30,95,168,0.12);
+  }
+
+  .info-card.danger::before {
+    background: linear-gradient(90deg, var(--danger), #e74c3c);
+  }
+
+  .info-card.gold::before {
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  }
+
+  .info-card.green::before {
+    background: linear-gradient(90deg, var(--success), #48bb78);
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 0.88rem;
+    color: #4a5568;
+    line-height: 1.6;
+  }
+
+  /* ── TABS ── */
+  .tabs-container { margin-top: 40px; }
+
+  .tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+    border-bottom: 2px solid rgba(30,95,168,0.1);
+    padding-bottom: 0;
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    color: #64748b;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .tab-btn:hover { color: var(--cornea-blue); background: rgba(30,95,168,0.05); }
+
+  .tab-btn.active {
+    color: var(--cornea-blue);
+    border-bottom-color: var(--cornea-blue);
+    background: rgba(30,95,168,0.05);
+    font-weight: 600;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── TWO COLUMN CONTENT ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-top: 32px;
+  }
+
+  .content-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(30,95,168,0.15);
+  }
+
+  .content-block p {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 12px;
+    line-height: 1.75;
+  }
+
+  .content-block ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .content-block ul li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    font-size: 0.88rem;
+    color: #4a5568;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .content-block ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--cornea-blue);
+    font-size: 0.75rem;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 32px;
+    font-size: 0.88rem;
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  .compare-table thead tr {
+    background: linear-gradient(90deg, var(--navy), var(--mid-blue));
+    color: var(--white);
+  }
+
+  .compare-table th {
+    padding: 14px 18px;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .compare-table td {
+    padding: 12px 18px;
+    color: #374151;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    vertical-align: top;
+  }
+
+  .compare-table tbody tr:hover {
+    background: rgba(30,95,168,0.04);
+  }
+
+  .compare-table tbody tr:last-child td { border-bottom: none; }
+
+  .compare-table td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.85rem;
+  }
+
+  /* ── SEVERITY TABLE ── */
+  .severity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .severity-card {
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .severity-card.mild { background: linear-gradient(135deg, #2d7a4e, #38a169); }
+  .severity-card.moderate { background: linear-gradient(135deg, #c8973a, #e6a817); }
+  .severity-card.severe { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+
+  .severity-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .severity-criteria {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+
+  /* ── TREATMENT TIMELINE ── */
+  .treatment-steps {
+    position: relative;
+    margin-top: 32px;
+  }
+
+  .treatment-steps::before {
+    content: '';
+    position: absolute;
+    left: 24px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--cornea-blue), var(--sky));
+  }
+
+  .step-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .step-num {
+    width: 50px; height: 50px;
+    background: linear-gradient(135deg, var(--cornea-blue), var(--sky));
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(30,95,168,0.3);
+  }
+
+  .step-content {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 18px 20px;
+    flex: 1;
+    border: 1px solid rgba(30,95,168,0.1);
+    margin-top: 6px;
+  }
+
+  .step-content h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--navy);
+    margin-bottom: 6px;
+    font-size: 1rem;
+  }
+
+  .step-content p {
+    font-size: 0.86rem;
+    color: #64748b;
+    line-height: 1.65;
+  }
+
+  /* ── WARNING BOXES ── */
+  .warning-box {
+    background: linear-gradient(135deg, #fff5f5, #ffe9e9);
+    border: 1px solid rgba(192,57,43,0.2);
+    border-left: 5px solid var(--danger);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin: 24px 0;
+  }
+
+  .warning-box h4 {
+    color: var(--danger);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .warning-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .warning-box ul li {
+    font-size: 0.87rem;
+    color: #7b241c;
+    padding: 4px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .warning-box ul li::before {
+    content: '!';
+    position: absolute; left: 0;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  .info-box {
+    background: linear-gradient(135deg, #f0f7ff, #e0efff);
+    border: 1px solid rgba(30,95,168,0.2);
+    border-left: 5px solid var(--cornea-blue);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin: 24px 0;
+  }
+
+  .info-box h4 {
+    color: var(--cornea-blue);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .info-box p {
+    font-size: 0.87rem;
+    color: #1a3a6e;
+    line-height: 1.65;
+  }
+
+  /* ── STATISTICS SECTION ── */
+  .stats-section {
+    background: linear-gradient(135deg, var(--navy), var(--deep-blue));
+    padding: 80px 24px;
+  }
+
+  .stats-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 32px 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(168,200,232,0.15);
+    border-radius: 16px;
+    transition: all 0.3s;
+  }
+
+  .stat-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-unit {
+    font-size: 1rem;
+    color: var(--light-blue);
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(168,200,232,0.7);
+    line-height: 1.5;
+  }
+
+  /* ── PREVENTION ── */
+  .prevention-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .prevention-item {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    border: 1px solid rgba(30,95,168,0.1);
+    transition: all 0.3s;
+  }
+
+  .prevention-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(30,95,168,0.12);
+    border-color: var(--cornea-blue);
+  }
+
+  .prevention-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .prevention-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .prevention-text {
+    font-size: 0.82rem;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* ── REFERENCES ── */
+  .references-section {
+    background: var(--navy);
+    padding: 80px 24px;
+  }
+
+  .references-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .ref-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+    counter-reset: ref-counter;
+  }
+
+  .ref-item {
+    counter-increment: ref-counter;
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(168,200,232,0.1);
+    position: relative;
+  }
+
+  .ref-num {
+    min-width: 28px; height: 28px;
+    background: var(--cornea-blue);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ref-text {
+    font-size: 0.85rem;
+    color: rgba(168,200,232,0.8);
+    line-height: 1.6;
+  }
+
+  .ref-text em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #050d1c;
+    padding: 40px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(168,200,232,0.1);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    color: rgba(168,200,232,0.5);
+    line-height: 1.7;
+  }
+
+  .footer-credits {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(168,200,232,0.1);
+    font-size: 0.82rem;
+    color: rgba(168,200,232,0.6);
+  }
+
+  .credits-name { color: var(--gold-light); font-weight: 600; }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(10,22,40,0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+    border-bottom: 1px solid rgba(168,200,232,0.15);
+  }
+
+  .sticky-nav.visible { transform: translateY(0); }
+
+  .sticky-nav-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 1rem;
+  }
+
+  .sticky-nav-links {
+    display: flex;
+    gap: 4px;
+  }
+
+  .sticky-nav a {
+    color: rgba(168,200,232,0.7);
+    text-decoration: none;
+    font-size: 0.78rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+
+  .sticky-nav a:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* ── BADGE CHIPS ── */
+  .badge-chip {
+    display: inline-block;
+    background: rgba(30,95,168,0.1);
+    color: var(--cornea-blue);
+    border: 1px solid rgba(30,95,168,0.2);
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin: 3px;
+  }
+
+  .badge-chip.red {
+    background: rgba(192,57,43,0.1);
+    color: var(--danger);
+    border-color: rgba(192,57,43,0.2);
+  }
+
+  .badge-chip.gold {
+    background: rgba(200,151,58,0.1);
+    color: var(--gold);
+    border-color: rgba(200,151,58,0.2);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .anatomy-grid, .two-col { grid-template-columns: 1fr; }
+    .severity-grid { grid-template-columns: 1fr; }
+    .sticky-nav-links { display: none; }
+    .compare-table { font-size: 0.78rem; }
+    .compare-table th, .compare-table td { padding: 10px 12px; }
+  }
+
+  /* ── APP LOGO ── */
+  /* ── APP LOGO ── */
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .app-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo-mark {
+    width: 96px; height: 96px;
+    position: relative;
+    flex-shrink: 0;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .logo-text-group {
+    text-align: center;
+  }
+
+  .hero-badge {
+
+  .logo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-name span {
+    color: var(--gold-light);
+  }
+
+  .logo-tagline {
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(168,200,232,0.7);
+    margin-top: 4px;
+  }
+
+  /* Sticky nav logo */
+  .sticky-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .sticky-logo-mark {
+    width: 32px; height: 32px;
+  }
+
+  .sticky-logo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .sticky-logo-name span { color: var(--gold-light); }
+
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── DRUG TABLE ── */
+  .drug-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    margin-top: 20px;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .drug-table thead { background: var(--deep-blue); color: var(--white); }
+  .drug-table th { padding: 12px 16px; text-align: left; font-family: 'Playfair Display', serif; font-size: 0.86rem; }
+  .drug-table td { padding: 10px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); color: #374151; }
+  .drug-table tbody tr:hover { background: rgba(30,95,168,0.04); }
+  .drug-table tbody tr:last-child td { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav" id="stickyNav">
+  <a href="#" class="sticky-logo">
+    <svg class="sticky-logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Shield/hexagon bg -->
+      <circle cx="20" cy="20" r="19" fill="#0d2347" stroke="rgba(168,200,232,0.3)" stroke-width="1"/>
+      <!-- Eye outline -->
+      <path d="M6 20 C11 12, 29 12, 34 20 C29 28, 11 28, 6 20Z" stroke="#3d8bcd" stroke-width="1.5" fill="rgba(30,95,168,0.2)"/>
+      <!-- Iris -->
+      <circle cx="20" cy="20" r="6.5" fill="rgba(30,95,168,0.5)" stroke="rgba(168,200,232,0.7)" stroke-width="1.2"/>
+      <!-- Pupil -->
+      <circle cx="20" cy="20" r="3" fill="rgba(5,13,28,0.95)"/>
+      <!-- Cornea highlight -->
+      <ellipse cx="22" cy="18" rx="1.8" ry="1.2" fill="rgba(255,255,255,0.55)" transform="rotate(-20,22,18)"/>
+      <!-- Cross/plus medical mark -->
+      <line x1="20" y1="3" x2="20" y2="8" stroke="rgba(200,151,58,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="17" y1="5.5" x2="23" y2="5.5" stroke="rgba(200,151,58,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <div class="sticky-logo-name">Kornea<span>Care</span></div>
+  </a>
+  <div class="sticky-nav-links">
+    <a href="#anatomi">Anatomi</a>
+    <a href="#keratitis">Keratitis</a>
+    <a href="#ulkus">Ulkus Kornea</a>
+    <a href="#penatalaksanaan">Tatalaksana</a>
+    <a href="#pencegahan">Pencegahan</a>
+    <a href="#referensi">Pustaka</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <!-- APP LOGO -->
+  <div class="app-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer glow ring -->
+        <circle cx="40" cy="40" r="38" fill="rgba(13,35,71,0.8)" stroke="rgba(168,200,232,0.25)" stroke-width="1.5"/>
+        <!-- Inner ring decoration -->
+        <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(168,200,232,0.12)" stroke-width="1" stroke-dasharray="3,4"/>
+        <!-- Eye shape -->
+        <path d="M10 40 C20 22, 60 22, 70 40 C60 58, 20 58, 10 40Z" fill="rgba(30,95,168,0.25)" stroke="rgba(61,139,205,0.8)" stroke-width="1.8"/>
+        <!-- Cornea / iris -->
+        <circle cx="40" cy="40" r="13" fill="rgba(30,95,168,0.5)" stroke="rgba(168,200,232,0.7)" stroke-width="1.5"/>
+        <!-- Pupil -->
+        <circle cx="40" cy="40" r="6.5" fill="#050d1c"/>
+        <!-- Cornea highlight -->
+        <ellipse cx="43.5" cy="36" rx="3.5" ry="2.3" fill="rgba(255,255,255,0.5)" transform="rotate(-25,43.5,36)"/>
+        <!-- Medical cross top -->
+        <rect x="37.5" y="5" width="5" height="12" rx="2.5" fill="rgba(200,151,58,0.85)"/>
+        <rect x="32" y="9" width="16" height="4" rx="2" fill="rgba(200,151,58,0.85)"/>
+        <!-- Bottom decorative line -->
+        <path d="M25 70 Q40 75 55 70" stroke="rgba(200,151,58,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="logo-text-group">
+      <div class="logo-name">Kornea<span>Care</span></div>
+      <div class="logo-tagline">Edukasi Kesehatan Mata</div>
+    </div>
+  </div>
+
+  <div class="hero-badge">Keratitis &amp; Ulkus Kornea</div>
+  <h1>Keratitis &<br><span>Ulkus Kornea</span></h1>
+  <p class="hero-subtitle">Panduan komprehensif memahami penyakit kornea — dari patofisiologi hingga tatalaksana klinis</p>
+
+  <div class="nav-pills">
+    <a href="#anatomi" class="nav-pill">Anatomi Kornea</a>
+    <a href="#keratitis" class="nav-pill">Keratitis</a>
+    <a href="#ulkus" class="nav-pill">Ulkus Kornea</a>
+    <a href="#penatalaksanaan" class="nav-pill">Tatalaksana</a>
+    <a href="#pencegahan" class="nav-pill">Pencegahan</a>
+    <a href="#referensi" class="nav-pill">Daftar Pustaka</a>
+  </div>
+</header>
+
+<!-- AUTHORS BANNER -->
+<div class="authors-banner">
+  <div class="authors-inner">
+    <div class="author-item">
+      <span class="author-label">Disusun Oleh</span>
+      <span class="author-name">Muhammad Ahnaf Defka Rizqia</span>
+      <span class="author-nim">NPM 2318011149</span>
+    </div>
+    <div class="divider-dot">·</div>
+    <div class="author-item">
+      <span class="author-label">&nbsp;</span>
+      <span class="author-name">Anisa Sabrina</span>
+      <span class="author-nim">NPM 2318011107</span>
+    </div>
+    <div class="divider-dot">·</div>
+    <div class="author-item">
+      <span class="author-label">Dosen Pembimbing</span>
+      <span class="author-name">dr. Rani Himayani, Sp.M</span>
+      <span class="author-name">dr. Muhammad Maulana, Sp.M</span>
+      <span class="author-name">dr. Resti Ramadani, Sp.THT-BKL</span>
+      <span class="author-name">Terza Aflika Happy, S.Keb., M.Ked Trop</span>
+      <span class="author-name">Khorina Fatin Bilqis, S.Si., M.Biomed</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="content-wrapper">
+
+  <!-- EPIDEMIOLOGY STATS -->
+  <div class="stats-section">
+    <div class="stats-inner">
+      <div style="text-align:center">
+        <div class="section-label light">Data Global — WHO</div>
+        <h2 class="section-title light">Angka Epidemiologi</h2>
+        <div class="divider-line center"></div>
+        <p class="section-desc light">Data World Health Organization menunjukkan besarnya beban penyakit kornea secara global, khususnya di negara berkembang</p>
+      </div>
+      <div class="stats-grid fade-in">
+        <div class="stat-card">
+          <div class="stat-number">39</div>
+          <div class="stat-unit">Juta Jiwa</div>
+          <div class="stat-label">Penderita kebutaan di seluruh dunia</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5,1%</div>
+          <div class="stat-unit">Dari Total Kebutaan</div>
+          <div class="stat-label">Disebabkan oleh penyakit pada kornea (WHO)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">80%</div>
+          <div class="stat-unit">Dapat Dicegah</div>
+          <div class="stat-label">Dari seluruh kasus gangguan penglihatan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10–15%</div>
+          <div class="stat-unit">Kebutaan Permanen</div>
+          <div class="stat-label">Keratitis bakteri menyebabkan kehilangan penglihatan permanen</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5,3</div>
+          <div class="stat-unit">per 100.000 Penduduk</div>
+          <div class="stat-label">Insidensi keratitis di Indonesia (1993)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANATOMY -->
+  <section id="anatomi">
+    <div class="section-label">Dasar Ilmu</div>
+    <h2 class="section-title">Anatomi Kornea</h2>
+    <div class="divider-line"></div>
+    <p class="section-desc">Pemahaman anatomi kornea sangat penting sebagai dasar memahami patofisiologi keratitis dan ulkus kornea</p>
+
+    <div class="anatomy-grid fade-in">
+      <div class="anatomy-visual">
+        <!-- SVG Diagram Kornea -->
+        <svg viewBox="0 0 220 220" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+          <!-- sclera bg -->
+          <circle cx="110" cy="110" r="100" fill="#1a3a6e" stroke="rgba(168,200,232,0.3)" stroke-width="1"/>
+          <!-- cornea outline -->
+          <ellipse cx="110" cy="110" rx="60" ry="60" fill="#0d2347" stroke="rgba(168,200,232,0.6)" stroke-width="2"/>
+          <!-- layers -->
+          <ellipse cx="110" cy="110" rx="55" ry="55" fill="rgba(30,95,168,0.15)" stroke="#3d8bcd" stroke-width="1.5"/>
+          <ellipse cx="110" cy="110" rx="47" ry="47" fill="rgba(30,95,168,0.2)" stroke="#3d8bcd" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <ellipse cx="110" cy="110" rx="39" ry="39" fill="rgba(30,95,168,0.3)" stroke="#3d8bcd" stroke-width="1.5"/>
+          <ellipse cx="110" cy="110" rx="30" ry="30" fill="rgba(30,95,168,0.5)" stroke="rgba(168,200,232,0.5)" stroke-width="1"/>
+          <circle cx="110" cy="110" r="18" fill="rgba(5,13,28,0.85)"/>
+          <circle cx="110" cy="110" r="6" fill="rgba(0,0,0,0.9)"/>
+          <!-- highlight -->
+          <ellipse cx="118" cy="100" rx="6" ry="4" fill="rgba(255,255,255,0.4)" transform="rotate(-20,118,100)"/>
+          <!-- labels lines -->
+          <line x1="110" y1="55" x2="170" y2="30" stroke="rgba(168,200,232,0.4)" stroke-width="1"/>
+          <line x1="110" y1="63" x2="170" y2="60" stroke="rgba(168,200,232,0.4)" stroke-width="1"/>
+          <line x1="110" y1="71" x2="170" y2="90" stroke="rgba(168,200,232,0.4)" stroke-width="1"/>
+          <line x1="110" y1="80" x2="170" y2="120" stroke="rgba(168,200,232,0.4)" stroke-width="1"/>
+          <text x="172" y="32" font-size="9" fill="rgba(168,200,232,0.9)" font-family="serif">Epitelium</text>
+          <text x="172" y="62" font-size="9" fill="rgba(168,200,232,0.9)" font-family="serif">Bowman</text>
+          <text x="172" y="92" font-size="9" fill="rgba(168,200,232,0.9)" font-family="serif">Stroma</text>
+          <text x="172" y="122" font-size="9" fill="rgba(168,200,232,0.9)" font-family="serif">Descemet</text>
+        </svg>
+
+        <div class="anatomy-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#a8c8e8"></div> Epitelium (5–7 lapis sel)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#3d8bcd"></div> Membran Bowman</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#1e5fa8"></div> Stroma (90% ketebalan)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#0d2347"></div> Membran Descemet</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#050d1c"></div> Endotelium</div>
+        </div>
+      </div>
+
+      <div class="anatomy-layers fade-in">
+        <div class="layer-card">
+          <div class="layer-name">Epitelium Kornea</div>
+          <div class="layer-desc">Terdiri dari 5–7 lapisan sel epitel bertingkat tidak berkeratin. Berperan sebagai barrier fisik utama terhadap mikroorganisme. Mampu regenerasi dalam 24–72 jam bila terjadi kerusakan.</div>
+        </div>
+        <div class="layer-card" style="border-left-color:#c8973a">
+          <div class="layer-name">Membran Bowman</div>
+          <div class="layer-desc">Lapisan kondensasi stroma anterior setebal ±12 µm. Tidak dapat beregenerasi bila rusak, dan kerusakannya dapat menyebabkan parut kornea permanen.</div>
+        </div>
+        <div class="layer-card" style="border-left-color:#2d7a4e">
+          <div class="layer-name">Stroma</div>
+          <div class="layer-desc">Menyusun 90% ketebalan kornea. Terdiri atas lamela kolagen yang tersusun rapi, bertanggung jawab atas transparansi kornea. Kerusakan stroma berpotensi menimbulkan jaringan parut (sikatriks).</div>
+        </div>
+        <div class="layer-card" style="border-left-color:#8b5cf6">
+          <div class="layer-name">Membran Descemet</div>
+          <div class="layer-desc">Membran basalis endotel, tebalnya meningkat seiring usia. Relatif resisten terhadap infeksi dan enzim proteolitik. Dapat menonjol keluar jika stroma sangat menipis (descemetocele).</div>
+        </div>
+        <div class="layer-card" style="border-left-color:#e74c3c">
+          <div class="layer-name">Endotelium</div>
+          <div class="layer-desc">Selapis sel yang memompa keluar cairan untuk menjaga kejernihan kornea. Sel endotel tidak dapat membelah pada manusia dewasa, sehingga kerusakannya bersifat permanen.</div>
+        </div>
+        <div class="info-box">
+          <h4>ℹ️ Fakta Klinis</h4>
+          <p>Kornea dewasa memiliki ketebalan rata-rata 0,54 mm di tengah dan 0,65 mm di tepi, dengan diameter 11–12 mm. Kornea menyumbang sekitar 43,25 dioptri (74%) dari total kekuatan refraksi mata normal, menjadikannya elemen optik terpenting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KERATITIS SECTION -->
+  <section id="keratitis" style="background: var(--white);">
+    <div class="section-label">Bagian I</div>
+    <h2 class="section-title">Keratitis</h2>
+    <div class="divider-line"></div>
+    <p class="section-desc">Peradangan pada kornea yang dapat disebabkan oleh infeksi maupun faktor non-infeksi</p>
+
+    <div class="cards-grid fade-in" style="margin-top:36px">
+      <div class="info-card">
+        <div class="card-icon">🔬</div>
+        <div class="card-title">Definisi</div>
+        <div class="card-text">Keratitis adalah peradangan pada kornea yang ditandai dengan adanya infiltrasi sel radang dan edema kornea pada lapisan kornea manapun, bersifat akut atau kronis, disebabkan oleh berbagai faktor antara lain bakteri, jamur, virus, atau alergi.</div>
+      </div>
+      <div class="info-card danger">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Urgensi Klinis</div>
+        <div class="card-text">Keratitis merupakan kondisi kegawatdaruratan medis. Diagnosis dan penanganan yang terlambat dapat mengakibatkan kerusakan kornea permanen, gangguan penglihatan berat, bahkan kebutaan.</div>
+      </div>
+      <div class="info-card gold">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Epidemiologi</div>
+        <div class="card-text">Di negara berkembang beriklim tropis seperti Indonesia, kebutaan kornea menempati urutan kedua setelah katarak. Insidensi keratitis bakteri: 5–20,7 per 100.000 penduduk/tahun. Di Amerika Serikat ±25.000 kasus/tahun.</div>
+      </div>
+    </div>
+
+    <!-- TABS KLASIFIKASI -->
+    <div class="tabs-container fade-in" style="margin-top:48px">
+      <div class="section-label">Klasifikasi & Etiologi</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--navy); margin-bottom:20px">Jenis-Jenis Keratitis</h3>
+
+      <div class="tab-buttons">
+        <button class="tab-btn active" onclick="showTab('tab-bakteri', this)">🦠 Bakteri</button>
+        <button class="tab-btn" onclick="showTab('tab-jamur', this)">🍄 Jamur</button>
+        <button class="tab-btn" onclick="showTab('tab-virus', this)">🧬 Virus</button>
+        <button class="tab-btn" onclick="showTab('tab-acanthamoeba', this)">🔭 Acanthamoeba</button>
+        <button class="tab-btn" onclick="showTab('tab-noninfeksi', this)">💊 Non-Infeksi</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-bakteri">
+        <div class="two-col">
+          <div class="content-block">
+            <h3>Keratitis Bakteri</h3>
+            <p>Merupakan bentuk keratitis infeksi yang paling sering dan paling berat komplikasinya. Dimulai dari adanya defek epitel kornea yang memungkinkan bakteri masuk ke stroma.</p>
+            <h4 style="font-family:'Playfair Display',serif; color:var(--navy); margin:16px 0 8px; font-size:0.95rem">Organisme Penyebab Tersering:</h4>
+            <ul>
+              <li><em>Pseudomonas aeruginosa</em> — paling agresif, terkait lensa kontak</li>
+              <li><em>Staphylococcus aureus</em> — tersering pada populasi umum</li>
+              <li><em>Streptococcus pneumoniae</em> — sering pada pasien imunokompromais</li>
+              <li><em>Haemophilus influenzae</em> — menyebabkan mata merah berat</li>
+              <li><em>Moraxella catarrhalis, Nocardia, Mycobacteria</em></li>
+            </ul>
+          </div>
+          <div class="content-block">
+            <h3>Faktor Risiko</h3>
+            <ul>
+              <li>Penggunaan lensa kontak (terutama tidur dengan lensa kontak)</li>
+              <li>Trauma kornea (terutama benda organik)</li>
+              <li>Riwayat operasi mata sebelumnya</li>
+              <li>Mata kering (sindrom dry eye)</li>
+              <li>Imunosupresi / penyakit sistemik</li>
+              <li>Kebersihan dan nutrisi yang buruk</li>
+              <li>Pekerjaan berisiko tinggi (petani, pekerja luar ruangan)</li>
+            </ul>
+            <div class="warning-box" style="margin-top:16px">
+              <h4>⚠️ Gejala Khas</h4>
+              <ul>
+                <li>Nyeri mata mendadak dan berat</li>
+                <li>Mata merah (injeksi siliaris)</li>
+                <li>Fotofobia (silau)</li>
+                <li>Lakrimasi berlebihan</li>
+                <li>Penurunan visus</li>
+                <li>Sekret purulen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-jamur">
+        <div class="two-col">
+          <div class="content-block">
+            <h3>Keratitis Jamur (Keratomikosis)</h3>
+            <p>Sangat umum di negara berkembang. Sering dikaitkan dengan trauma mata oleh bahan organik (ranting pohon, jerami, tanah). Perjalanan penyakit lebih lambat dan kronik dibanding keratitis bakteri.</p>
+            <h4 style="font-family:'Playfair Display',serif; color:var(--navy); margin:16px 0 8px; font-size:0.95rem">Organisme Penyebab:</h4>
+            <ul>
+              <li><em>Aspergillus sp.</em> — paling sering (filamentous)</li>
+              <li><em>Fusarium solani</em> — terkait lensa kontak, wabah</li>
+              <li><em>Candida albicans</em> — tersering pada pengguna steroid</li>
+              <li><em>Nocardia sp., Cephalosporium sp.</em></li>
+            </ul>
+          </div>
+          <div class="content-block">
+            <h3>Gambaran Klinis Khas</h3>
+            <ul>
+              <li>Infiltrat berbatas tegas seperti bulu (feathery margin)</li>
+              <li>Satellite lesions di sekitar infiltrat utama</li>
+              <li>Hipopion (pus di bilik mata depan)</li>
+              <li>Umumnya kurang nyeri dibanding keratitis bakteri</li>
+              <li>Respon lambat terhadap antibiotik spektrum luas</li>
+            </ul>
+            <div class="info-box" style="margin-top:16px">
+              <h4>🔑 Kunci Diagnosis</h4>
+              <p>Riwayat trauma oleh bahan tanaman/organik yang kuat meningkatkan kecurigaan keratitis jamur. Konfirmasi dengan kultur jamur dan pewarnaan Giemsa/calcofluor white.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-virus">
+        <div class="two-col">
+          <div class="content-block">
+            <h3>Keratitis Virus</h3>
+            <p>Herpes Simplex Virus (HSV) adalah penyebab tersering di negara maju. Bersifat rekurens dan dapat menyebabkan kebutaan kornea jangka panjang bila tidak ditangani dengan tepat.</p>
+            <h4 style="font-family:'Playfair Display',serif; color:var(--navy); margin:16px 0 8px; font-size:0.95rem">Etiologi Virus:</h4>
+            <ul>
+              <li>Herpes Simplex Virus (HSV-1) — tersering</li>
+              <li>Herpes Zoster Ophthalmicus (HZO)</li>
+              <li>Sitomegalovirus (CMV) — imunokompromais</li>
+              <li>Epstein-Barr Virus (EBV)</li>
+            </ul>
+          </div>
+          <div class="content-block">
+            <h3>Keratitis Herpes Simplex</h3>
+            <p>Dapat bersifat primer (infeksi pertama) atau rekurens. Infeksi primer terjadi antara umur 6 bulan–5 tahun atau 16–25 tahun. Dominan pada laki-laki ≥40 tahun.</p>
+            <ul>
+              <li>Lesi dendritik khas pada epitel kornea</li>
+              <li>Hipestesia/anestesia kornea (berkurangnya sensasi)</li>
+              <li>94–99% kasus bersifat unilateral</li>
+              <li>Dapat melibatkan stroma (keratitis diskiformis)</li>
+              <li>Fotofobia, injeksi perikornea, penglihatan kabur</li>
+            </ul>
+            <div class="info-box" style="margin-top:16px">
+              <h4>💊 Terapi Antiviral</h4>
+              <p>Asiklovir topikal atau oral merupakan terapi utama. Penggunaan steroid pada keratitis epitelial HSV merupakan kontraindikasi karena memperberat ulserasi epitel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-acanthamoeba">
+        <div class="two-col">
+          <div class="content-block">
+            <h3>Keratitis Acanthamoeba</h3>
+            <p>Infeksi parasit yang bersifat sangat serius. Insidensinya meningkat seiring maraknya penggunaan lensa kontak. Ditemukan di air keran, kolam renang, kolam air panas, dan tanah.</p>
+            <ul>
+              <li>Paling sering terkait dengan lensa kontak yang dicuci air keran</li>
+              <li>Paparan air tercemar (berenang dengan lensa kontak)</li>
+              <li>Sangat nyeri dan tidak proporsional dibanding temuan klinis</li>
+              <li>Ring infiltrat patognomonik (pada stadium lanjut)</li>
+              <li>Sering misdiagnosis sebagai keratitis herpes</li>
+            </ul>
+          </div>
+          <div class="content-block">
+            <h3>Penatalaksanaan & Prognosis</h3>
+            <p>Merupakan salah satu keratitis yang paling sulit diobati. Memerlukan agen antiparasit khusus dan pemantauan ketat jangka panjang.</p>
+            <ul>
+              <li>PHMB (polyhexamethylene biguanide) topikal</li>
+              <li>Klorheksidin topikal 0,02%</li>
+              <li>Pengobatan berlangsung lama (≥6 bulan)</li>
+              <li>Dapat menyebabkan parut kornea permanen</li>
+              <li>Transplantasi kornea mungkin diperlukan</li>
+            </ul>
+            <div class="warning-box" style="margin-top:12px">
+              <h4>⚠️ Pencegahan Utama</h4>
+              <ul>
+                <li>Jangan rendam lensa kontak dengan air keran</li>
+                <li>Jangan berenang/mandi dengan lensa kontak</li>
+                <li>Ganti wadah lensa kontak secara rutin</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-noninfeksi">
+        <div class="two-col">
+          <div class="content-block">
+            <h3>Keratitis Non-Infeksi</h3>
+            <p>Keratitis yang tidak disebabkan oleh agen infeksius, melainkan oleh reaksi imunologis, defisiensi nutrisi, atau paparan fisik/kimia.</p>
+            <ul>
+              <li><strong>Keratitis Fliktenular:</strong> reaksi hipersensitivitas tipe IV terhadap antigen Staphylococcus atau M. tuberculosis</li>
+              <li><strong>Keratitis Marginal:</strong> hipersensitivitas tipe III terhadap S. aureus</li>
+              <li><strong>Keratitis Ulseratif Periferal (PUK):</strong> terkait penyakit autoimun (reumatoid artritis, SLE)</li>
+              <li><strong>Keratitis Neurotropik:</strong> akibat anestesia kornea (N. V)</li>
+              <li><strong>Keratokonjungtivitis Sika:</strong> sindrom mata kering berat</li>
+              <li><strong>Keratomalasia:</strong> defisiensi vitamin A</li>
+            </ul>
+          </div>
+          <div class="content-block">
+            <h3>Patofisiologi Umum</h3>
+            <p>Patofisiologi keratitis dimulai dari gangguan mekanisme pertahanan kornea:</p>
+            <ul>
+              <li>Epitelium kornea berfungsi sebagai barier fisik pertama</li>
+              <li>Air mata mengandung lisozim, IgA, dan defensin</li>
+              <li>Kelopak mata berfungsi sebagai proteksi mekanis</li>
+              <li>Bila barier terganggu → patogen masuk → inflamasi stroma</li>
+              <li>Infiltrasi leukosit → pelepasan enzim proteolitik</li>
+              <li>Destruksi stroma → kekeruhan kornea → penurunan visus</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <div class="fade-in" style="margin-top:48px">
+      <div class="section-label">Perbandingan Etiologi</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--navy); margin-bottom:8px">Perbedaan Manifestasi Berdasarkan Etiologi</h3>
+      <p style="font-size:0.88rem; color:#64748b; margin-bottom:20px; font-style:italic">Adaptasi dari PNPK Ulkus Kornea PERDAMI dan Pedoman Nasional Kemenkes 2025</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Bakteri</th>
+            <th>Jamur</th>
+            <th>Herpes Simplex</th>
+            <th>Acanthamoeba</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Onset</td>
+            <td>Akut (jam–hari)</td>
+            <td>Subakut–Kronik</td>
+            <td>Akut–Subakut</td>
+            <td>Subakut</td>
+          </tr>
+          <tr>
+            <td>Nyeri</td>
+            <td>Berat</td>
+            <td>Sedang</td>
+            <td>Sedang</td>
+            <td>Sangat berat (tidak proporsional)</td>
+          </tr>
+          <tr>
+            <td>Penampakan infiltrat</td>
+            <td>Supuratif, batas kabur</td>
+            <td>Dry, feathery border</td>
+            <td>Dendritik/geografik</td>
+            <td>Pseudodendritik, ring infiltrat</td>
+          </tr>
+          <tr>
+            <td>Hipopion</td>
+            <td>Sering (+)</td>
+            <td>Dapat (+)</td>
+            <td>Jarang</td>
+            <td>Jarang</td>
+          </tr>
+          <tr>
+            <td>Sensasi kornea</td>
+            <td>Normal/menurun</td>
+            <td>Normal</td>
+            <td>Menurun/anestesia</td>
+            <td>Menurun</td>
+          </tr>
+          <tr>
+            <td>Faktor risiko khas</td>
+            <td>Lensa kontak, trauma</td>
+            <td>Trauma organik, steroid</td>
+            <td>Riwayat herpes labialis</td>
+            <td>Lensa kontak + air keran</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ULKUS KORNEA -->
+  <section id="ulkus">
+    <div class="section-label">Bagian II</div>
+    <h2 class="section-title">Ulkus Kornea</h2>
+    <div class="divider-line"></div>
+    <p class="section-desc">Komplikasi lanjut keratitis berupa erosi epitel disertai nekrosis stroma kornea yang mengancam fungsi penglihatan</p>
+
+    <div class="cards-grid fade-in" style="margin-top:36px">
+      <div class="info-card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Definisi</div>
+        <div class="card-text">Ulkus kornea adalah suatu keadaan patologik pada kornea yang ditandai dengan adanya infiltrat supuratif disertai defek kornea bergaung dan diskontinuitas jaringan kornea dari epitel sampai stroma. Dapat disebabkan oleh infeksi maupun non-infeksi.</div>
+      </div>
+      <div class="info-card danger">
+        <div class="card-icon">🏥</div>
+        <div class="card-title">Urgensi</div>
+        <div class="card-text">Ulkus kornea adalah kedaruratan oftalmologis yang memerlukan rujukan dan penanganan segera. Keterlambatan diagnosis dan terapi dapat mengakibatkan perforasi kornea, endoftalmitis, dan kebutaan permanen.</div>
+      </div>
+      <div class="info-card green">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Tujuan Tatalaksana</div>
+        <div class="card-text">Eradikasi penyebab ulkus, menekan reaksi peradangan agar tidak memperberat destruksi kornea, mempercepat penyembuhan defek epitel, dan mengatasi penurunan visus. Prognosis bergantung pada kecepatan dan ketepatan terapi.</div>
+      </div>
+    </div>
+
+    <!-- KLASIFIKASI ULKUS -->
+    <div class="fade-in" style="margin-top:48px">
+      <div class="section-label">Klasifikasi</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--navy); margin-bottom:24px">Klasifikasi Ulkus Kornea</h3>
+
+      <div class="two-col">
+        <div class="content-block">
+          <h3>Berdasarkan Lokasi</h3>
+          <div style="margin-bottom:16px">
+            <div style="background:linear-gradient(135deg,#f0f7ff,#e0efff); border-radius:10px; padding:16px 20px; border-left:4px solid var(--cornea-blue); margin-bottom:12px">
+              <strong style="color:var(--navy)">Ulkus Kornea Sentral</strong>
+              <p style="font-size:0.85rem; color:#4a5568; margin-top:6px">Berlokasi di area pupil dan sekitarnya. Penyebab tersering: <em>Pseudomonas sp., S. aureus, Fusarium sp.</em> Menyebabkan penurunan visus signifikan. Risiko tinggi membentuk leukoma yang mengganggu aksis visual.</p>
+            </div>
+            <div style="background:linear-gradient(135deg,#fff5f5,#ffe9e9); border-radius:10px; padding:16px 20px; border-left:4px solid var(--danger)">
+              <strong style="color:var(--navy)">Ulkus Kornea Perifer</strong>
+              <p style="font-size:0.85rem; color:#4a5568; margin-top:6px">Berlokasi di limbus dan daerah marginal kornea. Sering terkait penyakit autoimun. Meskipun tidak langsung mengganggu aksis visual, risiko perforasi pada descemetocele tetap ada.</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-block">
+          <h3>Berdasarkan Kedalaman</h3>
+          <ul>
+            <li><strong>Ulkus Superfisial:</strong> mengenai epitel dan membran Bowman — nyeri lebih ringan, prognosis lebih baik</li>
+            <li><strong>Ulkus Profunda/Stroma:</strong> mengenai lapisan stroma — nyeri lebih berat, risiko parut dan perforasi lebih tinggi</li>
+            <li><strong>Descemetocele:</strong> ulkus sangat dalam hingga membran Descemet menonjol keluar — kedaruratan bedah</li>
+            <li><strong>Perforasi Kornea:</strong> ulkus menembus seluruh ketebalan kornea — tanda: pupil runcing (iris prolaps)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEVERITY TABLE -->
+    <div class="fade-in" style="margin-top:48px">
+      <div class="section-label">Derajat Keparahan</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--navy); margin-bottom:8px">Klasifikasi Keparahan Ulkus Kornea Bakteri</h3>
+      <p style="font-size:0.85rem; color:#64748b; font-style:italic; margin-bottom:24px">Sumber: PNPK Ulkus Kornea PERDAMI & Pedoman Nasional Kemenkes RI 2025</p>
+
+      <div class="severity-grid">
+        <div class="severity-card mild">
+          <div class="severity-title">Derajat Ringan</div>
+          <div class="severity-criteria">
+            Diameter infiltrat ≤ 2 mm<br>
+            Lokasi sentral atau perifer<br>
+            Kedalaman ≤ 1/3 anterior stroma<br>
+            Hipopion minimal atau tidak ada<br>
+            Dapat ditangani di FKTP
+          </div>
+        </div>
+        <div class="severity-card moderate">
+          <div class="severity-title">Derajat Sedang</div>
+          <div class="severity-criteria">
+            Diameter infiltrat 2–6 mm<br>
+            Lokasi parakentral atau sentral<br>
+            Kedalaman 1/3–2/3 stroma<br>
+            Hipopion dapat ada<br>
+            Perlu rujuk ke FKRTL
+          </div>
+        </div>
+        <div class="severity-card severe">
+          <div class="severity-title">Derajat Berat</div>
+          <div class="severity-criteria">
+            Diameter infiltrat &gt; 6 mm<br>
+            Lokasi sentral, luas<br>
+            Kedalaman &gt; 2/3 stroma<br>
+            Hipopion besar (+)<br>
+            Rawat inap, konsultasi bedah
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GEJALA & DIAGNOSIS -->
+    <div class="fade-in" style="margin-top:48px">
+      <div class="two-col">
+        <div class="content-block">
+          <h3>Gejala Klinis</h3>
+          <p>Timbulnya nyeri merupakan gejala yang signifikan dari ulkus kornea. Intensitas nyeri bervariasi tergantung organisme penyebab dan kedalaman ulserasi.</p>
+          <ul>
+            <li>Nyeri mata yang signifikan</li>
+            <li>Mata merah (injeksi siliaris dan perilimbal)</li>
+            <li>Fotofobia (sangat mencolok)</li>
+            <li>Lakrimasi berlebihan</li>
+            <li>Penurunan visus (mendadak pada sebagian besar kasus)</li>
+            <li>Sekret mukopurulen</li>
+            <li>Blefarospasme</li>
+            <li>Edema palpebra</li>
+          </ul>
+        </div>
+        <div class="content-block">
+          <h3>Pemeriksaan & Diagnosis</h3>
+          <p>Diagnosis ditegakkan melalui anamnesis, pemeriksaan fisik, dan pemeriksaan penunjang. Slit lamp biomicroscopy merupakan pemeriksaan baku emas.</p>
+          <ul>
+            <li><strong>Anamnesis:</strong> riwayat trauma, lensa kontak, herpes, penyakit sistemik</li>
+            <li><strong>Pemeriksaan visus:</strong> mencatat penurunan tajam penglihatan</li>
+            <li><strong>Slit lamp:</strong> baku emas penegakan diagnosis</li>
+            <li><strong>Pewarnaan fluorescein:</strong> mendeteksi defek epitel</li>
+            <li><strong>Kerokan kornea:</strong> untuk kultur dan sensitivitas</li>
+            <li><strong>Pewarnaan Gram/Giemsa:</strong> identifikasi awal organisme</li>
+            <li><strong>Kultur jamur:</strong> bila ada kecurigaan keratomikosis</li>
+          </ul>
+          <div class="info-box" style="margin-top:16px">
+            <h4>🔍 Tanda Patognomonik</h4>
+            <p>Hipopion (lapisan pus di bilik mata depan) merupakan tanda khas ulkus kornea yang mengindikasikan proses inflamasi aktif pada segmen anterior.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KOMPLIKASI -->
+    <div class="fade-in" style="margin-top:48px">
+      <div class="section-label">Komplikasi</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--navy); margin-bottom:20px">Komplikasi Ulkus Kornea</h3>
+      <div class="warning-box">
+        <h4>⚠️ Komplikasi yang Dapat Terjadi</h4>
+        <ul>
+          <li>Sikatriks/leukoma kornea — menyebabkan penurunan visus permanen</li>
+          <li>Perforasi kornea — kedaruratan oftalmologis</li>
+          <li>Endoftalmitis dan panoftalmitis — mengancam seluruh bola mata</li>
+          <li>Fistula kornea dan sinekia anterior</li>
+          <li>Seklusio pupil dan katarak sekunder</li>
+          <li>Glaukoma sekunder akibat kerusakan trabecular meshwork</li>
+          <li>Ptisis bulbi (bola mata mengecil dan tidak berfungsi)</li>
+          <li>Ektasia kornea pasca penyembuhan</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TATALAKSANA -->
+  <section id="penatalaksanaan" style="background:var(--white)">
+    <div class="section-label">Bagian III</div>
+    <h2 class="section-title">Penatalaksanaan</h2>
+    <div class="divider-line"></div>
+    <p class="section-desc">Prinsip tatalaksana berdasarkan PNPK PERDAMI, Pedoman Kemenkes RI 2025, dan panduan international</p>
+
+    <div class="treatment-steps fade-in">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Penilaian Awal & Triase</h4>
+          <p>Lakukan anamnesis lengkap mencakup riwayat trauma, penggunaan lensa kontak, terapi sebelumnya, dan penyakit sistemik. Nilai derajat keparahan ulkus berdasarkan tabel PNPK (ringan/sedang/berat). Ulkus kornea berat harus segera dirujuk ke spesialis mata (Sp.M).</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Pengambilan Spesimen Mikrobiologi</h4>
+          <p>Sebelum pemberian antibiotik, lakukan kerokan kornea (corneal scraping) untuk kultur dan sensitivitas serta pewarnaan Gram dan Giemsa. Pada kasus yang tidak respons terhadap antibiotik spektrum luas, pertimbangkan pemeriksaan jamur dan Acanthamoeba.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Terapi Antibiotik Empiris</h4>
+          <p>Berikan antibiotik topikal spektrum luas sambil menunggu hasil kultur. Keputusan pemberian antibiotik awal didasarkan pada gambaran klinik, faktor risiko, kedalaman ulkus, dan lokasi ulkus. Evaluasi klinis dilakukan setelah 24–48 jam pemberian antibiotik.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Terapi Definitif Berdasarkan Etiologi</h4>
+          <p>Sesuaikan terapi dengan hasil kultur dan sensitivitas serta etiologi spesifik. Terapi anti-jamur untuk keratitis jamur, antiviral (asiklovir) untuk keratitis herpes, PHMB/klorheksidin untuk Acanthamoeba, imunosupresan untuk keratitis autoimun.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Terapi Suportif</h4>
+          <p>Sikloplegik (atropin/homatropin) untuk mencegah sinekia posterior dan mengurangi spasme siliaris. Analgesik sistemik untuk mengurangi nyeri. Hindari kortikosteroid topikal pada keratitis bakteri aktif (kontroversial) dan kontraindikasi pada keratitis herpes epitelial.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>Tindakan Bedah (Bila Diperlukan)</h4>
+          <p>Indikasi: descemetocele, perforasi kornea, atau kegagalan terapi medis. Pilihan: keratoplasti (transplantasi kornea), aplikasi lem sianokrilat (cyanoacrylate adhesive) untuk mencegah perforasi, debridemen epitel pada keratitis herpes epitelial, amniotic membrane transplantation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRUG TABLES -->
+    <div class="fade-in" style="margin-top:48px">
+      <div class="section-label">Farmakoterapi</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--navy); margin-bottom:8px">Pilihan Terapi Farmakologis</h3>
+      <p style="font-size:0.85rem; color:#64748b; font-style:italic; margin-bottom:20px">Berdasarkan PNPK PERDAMI dan Pedoman Nasional Kemenkes RI 2025</p>
+
+      <table class="drug-table">
+        <thead>
+          <tr>
+            <th>Etiologi</th>
+            <th>Obat Pilihan</th>
+            <th>Alternatif</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bakteri (empiris)</td>
+            <td>Fluorokuinolon topikal (siprofloksasin/moxifloksasin) tetes 4–8×/hari</td>
+            <td>Aminoglikosid + sefalosporin gen. 1</td>
+            <td>Evaluasi 24–48 jam, sesuaikan hasil kultur</td>
+          </tr>
+          <tr>
+            <td>Jamur — Filamentous</td>
+            <td>Natamisin 5% tetes (anti-jamur pilihan)</td>
+            <td>Vorikonazol topikal/oral</td>
+            <td>Hindari steroid pada keratitis jamur aktif</td>
+          </tr>
+          <tr>
+            <td>Jamur — Candida</td>
+            <td>Flukonazol oral + topikal</td>
+            <td>Amfoterisin B topikal 0,15%</td>
+            <td>Durasi terapi lebih lama (6–8 minggu)</td>
+          </tr>
+          <tr>
+            <td>HSV (Epitelial)</td>
+            <td>Asiklovir salep mata 3% 5×/hari</td>
+            <td>Gansiklovir gel topikal</td>
+            <td>Kontraindikasi steroid topikal</td>
+          </tr>
+          <tr>
+            <td>HSV (Stroma)</td>
+            <td>Asiklovir oral + steroid topikal dengan pengawasan ketat</td>
+            <td>Valasiklovir oral</td>
+            <td>Hanya di bawah pengawasan Sp.M</td>
+          </tr>
+          <tr>
+            <td>Acanthamoeba</td>
+            <td>PHMB 0,02% + propamidine 0,1% tetes</td>
+            <td>Klorheksidin 0,02%</td>
+            <td>Terapi ≥6 bulan, pemantauan ketat</td>
+          </tr>
+          <tr>
+            <td>PUK (Autoimun)</td>
+            <td>Imunosupresan sistemik (prednison 1 mg/kg/hari)</td>
+            <td>Metotreksat, siklofosfamid</td>
+            <td>Kolaborasi dengan reumatologi</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PENCEGAHAN -->
+  <section id="pencegahan">
+    <div class="section-label">Bagian IV</div>
+    <h2 class="section-title">Pencegahan & Edukasi Pasien</h2>
+    <div class="divider-line"></div>
+    <p class="section-desc">Sebanyak 80% kasus gangguan penglihatan akibat penyakit kornea dapat dicegah dengan tindakan preventif yang tepat</p>
+
+    <div class="prevention-grid fade-in">
+      <div class="prevention-item">
+        <span class="prevention-icon">🧴</span>
+        <div class="prevention-title">Kebersihan Tangan</div>
+        <div class="prevention-text">Cuci tangan dengan sabun sebelum menyentuh mata atau memasang/melepas lensa kontak. Ini adalah langkah pencegahan paling fundamental.</div>
+      </div>
+      <div class="prevention-item">
+        <span class="prevention-icon">👁️</span>
+        <div class="prevention-title">Penggunaan Lensa Kontak Aman</div>
+        <div class="prevention-text">Jangan tidur dengan lensa kontak. Jangan melebihi masa pakai. Jangan gunakan air keran untuk membersihkan lensa. Ganti wadah lensa secara berkala.</div>
+      </div>
+      <div class="prevention-item">
+        <span class="prevention-icon">🥽</span>
+        <div class="prevention-title">Proteksi Mata</div>
+        <div class="prevention-text">Gunakan kacamata pelindung saat bekerja di area berisiko (pertanian, pertukangan, laboratorium kimia, lingkungan berdebu atau berpotensi melukai mata).</div>
+      </div>
+      <div class="prevention-item">
+        <span class="prevention-icon">🏊</span>
+        <div class="prevention-title">Aktivitas Air</div>
+        <div class="prevention-text">Lepas lensa kontak sebelum berenang, mandi, atau masuk kolam renang/jacuzzi. Air mengandung Acanthamoeba yang dapat menyebabkan infeksi serius.</div>
+      </div>
+      <div class="prevention-item">
+        <span class="prevention-icon">💊</span>
+        <div class="prevention-title">Hindari Steroid Sembarangan</div>
+        <div class="prevention-text">Jangan gunakan obat tetes mengandung kortikosteroid tanpa resep dokter. Pada infeksi aktif, steroid dapat memperburuk keadaan secara signifikan.</div>
+      </div>
+      <div class="prevention-item">
+        <span class="prevention-icon">🥕</span>
+        <div class="prevention-title">Nutrisi Adekuat</div>
+        <div class="prevention-text">Penuhi kebutuhan Vitamin A untuk menjaga integritas epitel kornea. Defisiensi vitamin A dapat menyebabkan keratomalasia yang berujung kebutaan.</div>
+      </div>
+      <div class="prevention-item">
+        <span class="prevention-icon">🏥</span>
+        <div class="prevention-title">Pemeriksaan Rutin</div>
+        <div class="prevention-text">Lakukan pemeriksaan mata rutin terutama pada penderita diabetes, reumatoid artritis, atau kondisi imunosupresi yang meningkatkan risiko keratitis.</div>
+      </div>
+      <div class="prevention-item">
+        <span class="prevention-icon">🚨</span>
+        <div class="prevention-title">Segera Berobat</div>
+        <div class="prevention-text">Jangan tunda pemeriksaan jika mengalami mata merah + nyeri + penurunan penglihatan. Keratitis dan ulkus kornea memerlukan penanganan cepat dan tepat.</div>
+      </div>
+    </div>
+
+    <div class="warning-box fade-in" style="margin-top:40px">
+      <h4>🚨 Kapan Harus Segera ke Dokter Mata?</h4>
+      <ul>
+        <li>Mata merah disertai nyeri hebat yang tiba-tiba</li>
+        <li>Penurunan penglihatan yang mendadak</li>
+        <li>Sensitif terhadap cahaya (fotofobia) yang berat</li>
+        <li>Sekret mata yang banyak dan berwarna</li>
+        <li>Riwayat trauma mata, benda asing, atau penggunaan lensa kontak dengan gejala di atas</li>
+        <li>Gejala tidak membaik dalam 24–48 jam meskipun sudah menggunakan obat tetes biasa</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<!-- REFERENCES -->
+<div class="references-section" id="referensi">
+  <div class="references-inner">
+    <div class="section-label light">Sumber Ilmiah</div>
+    <h2 class="section-title light">Daftar Pustaka</h2>
+    <div class="divider-line"></div>
+    <p class="section-desc light">Materi dalam aplikasi edukasi ini disusun berdasarkan referensi ilmiah terpercaya dari PERDAMI, WHO, dan literatur oftalmologi internasional</p>
+
+    <ol class="ref-list">
+      <li class="ref-item">
+        <div class="ref-num">1</div>
+        <div class="ref-text">Perhimpunan Dokter Spesialis Mata Indonesia (PERDAMI). <em>Pedoman Nasional Pelayanan Kedokteran (PNPK) Ulkus Kornea Bakteri.</em> Jakarta: PERDAMI; 2023. Tersedia di: https://perdami.or.id/web/pnpk</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">2</div>
+        <div class="ref-text">Kementerian Kesehatan Republik Indonesia. <em>Keputusan Menteri Kesehatan RI Nomor HK.01.07/MENKES/723/2025 tentang Pedoman Nasional Pelayanan Kesehatan Ulkus Kornea.</em> Jakarta: Kemenkes RI; 2025.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">3</div>
+        <div class="ref-text">World Health Organization (WHO). <em>Global Data on Visual Impairment.</em> Geneva: WHO; 2023. (WHO/NMH/PBD/12.01). Tersedia di: https://www.who.int/blindness</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">4</div>
+        <div class="ref-text">Vaughan DG, Asbury T, Riordan-Eva P. <em>Oftalmologi Umum (General Ophthalmology).</em> Edisi ke-14. Alih bahasa: Tambajong J, Pendit BU. Jakarta: Widya Medika; 2012. hlm. 129–52, 220.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">5</div>
+        <div class="ref-text">Ilyas S. <em>Ilmu Penyakit Mata.</em> Edisi ke-3. Jakarta: Balai Penerbit FKUI; 2005. hlm. 147–158.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">6</div>
+        <div class="ref-text">Liesegag TJ, Skuta GL, Canton LB. <em>Basic and Clinical Science Course: External Eye Disease.</em> Section 8. San Francisco: American Academy of Ophthalmology; 2019–2020.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">7</div>
+        <div class="ref-text">Austin A, Lietman T, Rose-Nussbaumer J. Update on the Management of Infectious Keratitis. <em>Ophthalmology.</em> 2017;124(11):1678–1689.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">8</div>
+        <div class="ref-text">Lakhundi S, Siddiqui R, Khan NA. Pathogenesis of microbial keratitis. <em>Microbial Pathogenesis.</em> 2017;104:97–109.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">9</div>
+        <div class="ref-text">Al-mujaini A, Al-kharusi N, Thakral A, Wali UK. Bacterial Keratitis: Perspective on Epidemiology, Clinico-Pathogenesis, Diagnosis and Treatment. <em>Sultan Qaboos Univ Med J.</em> 2009;9(2):184–195.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">10</div>
+        <div class="ref-text">Stapleton F, Carnt N. Contact lens-related microbial keratitis: How have epidemiology and genetics helped us with pathogenesis and prophylaxis. <em>Eye.</em> 2012;26(2):185–193.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">11</div>
+        <div class="ref-text">Yagci A. Update on peripheral ulcerative keratitis. <em>Clinical Ophthalmology.</em> 2012;6:747–754.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">12</div>
+        <div class="ref-text">Upadhyay MP, Srinivasan M, Whitcher JP. Diagnosing and managing microbial keratitis. <em>Community Eye Health Journal.</em> 2015;28(89):3–6.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">13</div>
+        <div class="ref-text">Susiyanti M, Edwar L, et al. Various factors affecting the bacterial corneal ulcer healing: a 4-years study in referral tertiary eye hospital in Indonesia. <em>Indonesian Journal of Ophthalmology.</em> 2015.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">14</div>
+        <div class="ref-text">Khor WB, Prajna VN, Garg P, et al. The Asia Cornea Society Infectious Keratitis Study: A Prospective Multicenter Study of Infectious Keratitis in Asia. <em>American Journal of Ophthalmology.</em> 2018;195:161–170.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">15</div>
+        <div class="ref-text">Srinivasan M, Mascarenhas J, Prashanth CN. Distinguishing infective versus noninfective keratitis. <em>Indian Journal of Ophthalmology.</em> 2008;56(3):203–207.</div>
+      </li>
+      <li class="ref-item">
+        <div class="ref-num">16</div>
+        <div class="ref-text">Duane's Ophthalmology. Jaeger EA, Tasman W, editors. Philadelphia: Lippincott Williams & Wilkins; 2013. Chapter 18, p. 21.</div>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">
+    <svg style="vertical-align:middle; margin-right:10px" width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="38" fill="rgba(13,35,71,0.8)" stroke="rgba(168,200,232,0.25)" stroke-width="1.5"/>
+      <path d="M10 40 C20 22, 60 22, 70 40 C60 58, 20 58, 10 40Z" fill="rgba(30,95,168,0.25)" stroke="rgba(61,139,205,0.8)" stroke-width="1.8"/>
+      <circle cx="40" cy="40" r="13" fill="rgba(30,95,168,0.5)" stroke="rgba(168,200,232,0.7)" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="6.5" fill="#050d1c"/>
+      <ellipse cx="43.5" cy="36" rx="3.5" ry="2.3" fill="rgba(255,255,255,0.5)" transform="rotate(-25,43.5,36)"/>
+      <rect x="37.5" y="5" width="5" height="12" rx="2.5" fill="rgba(200,151,58,0.85)"/>
+      <rect x="32" y="9" width="16" height="4" rx="2" fill="rgba(200,151,58,0.85)"/>
+    </svg>
+    KorneaCare
+  </div>
+  <p class="footer-text">
+    Aplikasi ini dibuat untuk keperluan edukasi kesehatan dalam bidang ilmu penyakit mata.<br>
+    Tidak menggantikan konsultasi dan pemeriksaan langsung oleh dokter spesialis mata.
+  </p>
+  <div class="footer-credits">
+    <p>Disusun oleh:</p>
+    <p><span class="credits-name">Muhammad Ahnaf Defka Rizqia</span> (2318011149) &nbsp;&amp;&nbsp; <span class="credits-name">Anisa Sabrina</span> (2318011107)</p>
+    <p style="margin-top:6px">Dosen Pembimbing:</p>
+    <p><span class="credits-name">dr. Rani Himayani, Sp.M</span> &nbsp;·&nbsp; <span class="credits-name">dr. Muhammad Maulana, Sp.M</span></p>
+    <p><span class="credits-name">dr. Resti Ramadani, Sp.THT-BKL</span> &nbsp;·&nbsp; <span class="credits-name">Terza Aflika Happy, S.Keb., M.Ked Trop</span></p>
+    <p><span class="credits-name">Khorina Fatin Bilqis, S.Si., M.Biomed</span></p>
+    <p style="margin-top:12px; font-size:0.75rem; opacity:0.5">Departemen Ilmu Kesehatan Mata — Fakultas Kedokteran</p>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav
+  const stickyNav = document.getElementById('stickyNav');
+  const hero = document.querySelector('.hero');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > hero.offsetHeight - 80) {
+      stickyNav.classList.add('visible');
+    } else {
+      stickyNav.classList.remove('visible');
+    }
+  });
+
+  // Tab switching
+  function showTab(tabId, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth active nav
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.sticky-nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current
+        ? 'white' : 'rgba(168,200,232,0.7)';
+    });
+  });
+</script>
+</body>
+</html>
